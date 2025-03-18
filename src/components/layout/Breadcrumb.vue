@@ -10,15 +10,13 @@
 <script>
 export default {
     name: 'Breadcrumb',
-    data() {
-        return {
-            menuList: []
+   
+    computed: {
+        menuList() {
+            return this.$route.matched.filter(item => item.meta && item.meta.title)
         }
     },
-    created() {
-        this.menuList = this.$route.matched.filter(item => item.meta && item.meta.title)
-        
-    }
+    
 }
 
 </script>

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfinance_manager=self.webpackChunkfinance_manager||[]).push([[399],{5399:function(n,t,a){a.r(t),a.d(t,{default:function(){return e}});var e=(0,a(1001).Z)({},(function(){this._self._c;return this._m(0)}),[function(){var n=this._self._c;return n("div",{staticClass:"about"},[n("h1",[this._v("This is an about page")])])}],!1,null,null,null).exports}}]);

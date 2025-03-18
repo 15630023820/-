@@ -61,7 +61,8 @@ import MenuView from '@/components/layout/menu'
         this[e]()
       },
       logout(){
-        this.$router.push('/login')
+        window.sessionStorage.removeItem('token')
+       window.location.reload()
       } 
      }
   }

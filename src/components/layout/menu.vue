@@ -48,3 +48,11 @@ import submenu from './submenu.vue';
     }
   }
 </script>
+<style scoped >
+:deep(.el-menu-item) {
+  text-align: left;
+}
+:deep(.el-submenu) {
+  text-align: left;
+}
+</style>

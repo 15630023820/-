@@ -7,6 +7,15 @@ import req from '@/utils/request'
 import store from '@/store/index'
 import { loadMenu as getMenu } from '@/api/user'
 import Layoutview from '@/views/Layout.vue' 
+
+//解决Router3版本的bug
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location,resolve,reject) {
+  if (resolve || reject) return originalPush.call(this, location,resolve,reject)
+  return originalPush.call(this, location).catch(err => {})
+}
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -14,9 +23,21 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    // component: HomeView
+    redirect:'/dashboard',
   },
- 
+  {
+    path: '/dashboard',
+    redirect:'/dashboard/index',
+    name: 'dashboard',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: Layoutview,
+    children:[
+      { path:'/dashboard/index',component:() => import('@/views/dashboard.vue'),meta:{title:'首页'} }
+    ]
+  },
   {
     path: '/login',
     name: 'login',
